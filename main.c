@@ -5,6 +5,7 @@
 #include "day_one.c"
 
 #include "day_two.c"
+#include "day_three.c"
 
 int main(void)
 {
@@ -13,6 +14,9 @@ int main(void)
 
 	printf("day 2 solution:\t%i\n", day_two_sollution());
 	printf("day 2 part two:\t%i\n", day_two_part_two());
+
+	printf("day 3 solution:\t%i\n", day_three_sollution());
+	printf("day 3 part two:\t%i\n", day_three_part_two());
 	
 	return 0; 
 }
