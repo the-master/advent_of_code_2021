@@ -58,7 +58,7 @@ typedef struct tree_ {
 	struct tree_* right;
 }tree_;
 typedef struct map_{
-	int (*compare)(key_type_, value_type_);
+	int (*compare)(key_type_, key_type_);
 	int err;
 	tree_* content;
 	void(*put)(struct map_*, key_type_, value_type_);
@@ -72,7 +72,7 @@ value_type_ get_(map_* map, key_type_ key);
 int contains_key_(map_* map, key_type_ key);
 value_type_  remove_(map_* map, key_type_ key);
 void del_(map_*);
-map_ new_map_(int (*compare)(key_type_, value_type_)) {
+map_ new_map_(int (*compare)(key_type_, key_type_)) {
 	return (map_) { 
 		.compare = compare,
 		.content = 0,
@@ -112,8 +112,10 @@ void put_(map_* map, key_type_  key, value_type_ value) {
 		}
 		int compare_result = map->compare(key,(*tree)->value.key);
 
-		if (compare_result == 0)
-			return;//no duplicate  allowed
+		if (compare_result == 0) {
+			(*tree)->value = e;
+		}
+			
 		if (compare_result < 0) {
 			tree = &((*tree)->left);
 		}
