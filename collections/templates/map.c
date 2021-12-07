@@ -20,7 +20,7 @@
 #define get__ get_
 #define remove_all__ remove_all_
 #define entry__ entry_
-#define del__
+#define del__ delete_
 #define underscore_ _
 #define TREE _tree
 #define ccat(a,b) ccat2(a,b)
@@ -84,10 +84,11 @@ map_ new_map_(int (*compare)(key_type_, key_type_)) {
 		.del = del_
 	};
 }
+//TODO not recursive
 void del_(map_* map) {
-	if(map->content){
+	if(map && map->content){
 		map_ left = (map_){ .content = map->content->left };
-		map_ right = (map_){ .content = map->content->left };
+		map_ right = (map_){ .content = map->content->right };
 		del_(&left);
 		del_(&right);
 		free(map->content);

@@ -549,6 +549,9 @@ int day_five_sollution() {
 	while (keys.n)
 		if (m.get(&m, keys.pop(&keys)) >= 2)
 			result++;
+
+	delete_int_stack(&keys);
+	//delete_Point_int(&m);
 	return result;
 }
 
@@ -561,7 +564,6 @@ int day_five_part_two() {
 	{
 		Point start = pnt(hydro_termal_vents[i][0]);
 		Point end = pnt(hydro_termal_vents[i][1]);
-
 		Point dir = direction(hydro_termal_vents[i]);
 
 		for (; compare_points(start, add(end, dir)) != 0; start = add(start, dir)) {
@@ -576,5 +578,9 @@ int day_five_part_two() {
 	while (keys.n)
 		if (m.get(&m, keys.pop(&keys)) >= 2)
 			result++;
+
+
+	delete_int_stack(&keys);
+	//delete_Point_int(&m);
 	return result;
 }
